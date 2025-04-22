@@ -1,0 +1,25 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #70c5ce, #5babc5);
+    font-family: 'Press Start 2P', sans-serif;
+    margin: 0;
+    overflow: hidden;
+}
+  
+canvas {
+    border: 1px solid #000000;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 1);
+    background: #fff;
+}
+  
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+}

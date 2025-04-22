@@ -1,0 +1,13 @@
+.mensagemGetReady, .mensagemGameOver {
+    font-family: 'Press Start 2P', sans-serif;
+    color: #fff;
+    font-size: 32px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+.mensagemGameOver {
+    font-size: 40px;
+}

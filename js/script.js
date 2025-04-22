@@ -85,3 +85,66 @@ function fazColisao(flappyBird, chao) {
   
     return false;
   }
+
+function criaFlappyBird() {
+  const flappyBird = {
+    spriteX: 0,
+    spriteY: 0,
+    largura: 33,
+    altura: 24,
+    x: 10,
+    y: 50,
+    pulo: 4.6,
+    pula() {
+      if (som_JUMP.ended || som_JUMP.currentTime == 0) {
+        som_JUMP.currentTime = 0;
+        som_JUMP.play();
+      }
+      flappyBird.velocidade = - flappyBird.pulo;
+    },
+    gravidade: 0.25,
+    velocidade: 0,
+    atualiza() {
+      if(fazColisao(flappyBird, globais.chao)) {
+        som_HIT.play();
+
+        mudaParaTela(Telas.GAME_OVER);
+        return;
+      }
+  
+      flappyBird.velocidade = flappyBird.velocidade + flappyBird.gravidade;
+      flappyBird.y = flappyBird.y + flappyBird.velocidade;
+    },
+    movimentos: [
+      { spriteX: 0, spriteY: 0, }, // asa pra cima
+      { spriteX: 0, spriteY: 26, }, // asa no meio 
+      { spriteX: 0, spriteY: 52, }, // asa pra baixo
+      { spriteX: 0, spriteY: 26, }, // asa no meio 
+    ],
+    frameAtual: 0,
+    atualizaOFrameAtual() {     
+      const intervaloDeFrames = 10;
+      const passouOIntervalo = frames % intervaloDeFrames === 0;
+
+      if(passouOIntervalo) {
+        const baseDoIncremento = 1;
+        const incremento = baseDoIncremento + flappyBird.frameAtual;
+        const baseRepeticao = flappyBird.movimentos.length;
+        flappyBird.frameAtual = incremento % baseRepeticao
+      }
+    },
+    desenha() {
+      flappyBird.atualizaOFrameAtual();
+      const { spriteX, spriteY } = flappyBird.movimentos[flappyBird.frameAtual];
+
+      contexto.drawImage(
+        sprites,
+        spriteX, spriteY, // Sprite X, Sprite Y
+        flappyBird.largura, flappyBird.altura, // Tamanho do recorte na sprite
+        flappyBird.x, flappyBird.y,
+        flappyBird.largura, flappyBird.altura,
+      );
+    }
+  }
+  return flappyBird;  
+}

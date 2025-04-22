@@ -406,3 +406,42 @@ Telas.GAME_OVER = {
     mudaParaTela(Telas.INICIO);
   }
 }
+
+function pegaMedalha(pontos) {
+  if (pontos >= 50) return 'platina';
+  if (pontos >= 40) return 'ouro';
+  if (pontos >= 30) return 'prata';
+  if (pontos >= 0) return 'bronze';
+  return null;
+}
+
+
+function salvaHighScore(pontuacao) {
+  const highScore = localStorage.getItem('highScore');
+  
+  if (!highScore || pontuacao > parseInt(highScore)) {
+    localStorage.setItem('highScore', pontuacao);
+  }
+}
+
+function pegaHighScore() {
+  return localStorage.getItem('highScore') || 0;
+}
+
+function loop() {
+
+  telaAtiva.desenha();
+  telaAtiva.atualiza();
+
+  frames = frames + 1;
+  requestAnimationFrame(loop);
+}
+
+window.addEventListener('click', function() {
+  if(telaAtiva.click) {
+    telaAtiva.click();
+  }
+});
+
+mudaParaTela(Telas.INICIO);
+loop();

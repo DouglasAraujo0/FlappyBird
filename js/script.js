@@ -443,5 +443,19 @@ window.addEventListener('click', function() {
   }
 });
 
+document.addEventListener("keydown", (evento) => {
+    const tecla = evento.code;
+  
+    if (tecla == "Space") {
+      if (telaAtiva.click) {
+        telaAtiva.click();
+      }
+    }
+  
+    if (evento.code === "Enter" && telaAtiva === Telas.GAME_OVER) {
+      mudaParaTela(Telas.INICIO);
+    }
+  });
+
 mudaParaTela(Telas.INICIO);
 loop();

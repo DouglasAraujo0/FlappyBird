@@ -1,0 +1,23 @@
+#medalhas {
+  width: 44px;
+  height: 44px;
+  background-image: url('./sprites.png');
+  background-repeat: no-repeat;
+  margin: 10px auto;
+}
+
+.medalhaBronze {
+  background-position: -0px -120px;
+}
+
+.medalhaPrata {
+  background-position: -48px -120px;
+}
+
+.medalhaOuro {
+  background-position: -96px -120px;
+}
+
+.medalhaPlatina {
+  background-position: -144px -120px;
+}

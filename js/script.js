@@ -7,15 +7,10 @@ import { criaPlacar } from './components/placar.js';
 export let frames = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
+
   const modalRegras = document.getElementById('modalRegras');
-  const fecharModal = document.getElementById('fecharModal');
-
+  
   modalRegras.style.display = 'flex';
-
-  fecharModal.addEventListener('click', () => {
-    modalRegras.style.display = 'none'; 
-    inicializaJogo(); 
-  });
 });
 
 function inicializaJogo() {

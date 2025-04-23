@@ -23,7 +23,7 @@
     margin-top: 30px;
 }
   
-#fecharModal {
+.fecharModal {
     padding: 10px 20px;
     margin-top: 30px;
     font-family: 'Press Start 2P', sans-serif;
@@ -35,6 +35,6 @@
     
 }
   
-#fecharModal:hover {
+.fecharModal:hover {
     background-color: #FF8C00;
 }
